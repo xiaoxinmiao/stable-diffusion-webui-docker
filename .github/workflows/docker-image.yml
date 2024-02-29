@@ -98,12 +98,10 @@ jobs:
         context: .
         file: Dockerfile.cuda
         build-args: |
-          RELEASE_STAGE=${{ vars.release_stage }}
-          BRANCH_OR_TAG=${{ vars.branch_or_tag }}
           BUILD_DATE=${{ steps.vars.outputs.build_date }}
           BUILD_VERSION=${{ steps.vars.outputs.build_version }}
         push: true
         tags: |
-          relaxed/stable-diffusion-webui-docker:${{ vars.release_stage }}-cuda
-          relaxed/stable-diffusion-webui-docker:cuda-${{ vars.branch_or_tag }}-${{ steps.vars.outputs.build_version }}
+          relaxed/stable-diffusion-webui-docker:latest-cuda
+          relaxed/stable-diffusion-webui-docker:cuda-12.3.1-${{ steps.vars.outputs.build_version }}
         platforms: linux/amd64
